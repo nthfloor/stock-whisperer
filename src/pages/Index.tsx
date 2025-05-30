@@ -30,6 +30,14 @@ const Index = () => {
     }
   ]);
 
+  const handleLogin = () => {
+    login();
+  };
+
+  const handleLogout = () => {
+    logout();
+  };
+
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -70,7 +78,7 @@ const Index = () => {
               </div>
             </div>
             <Button 
-              onClick={login} 
+              onClick={handleLogin} 
               className="w-full bg-blue-600 hover:bg-blue-700"
             >
               Sign In to Get Started
@@ -101,12 +109,12 @@ const Index = () => {
                 <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
                   <User className="w-4 h-4" />
                 </div>
-                <span className="text-sm font-medium">{user?.given_name || 'User'}</span>
+                <span className="text-sm font-medium">{user?.givenName || 'User'}</span>
               </div>
               <Button 
                 variant="ghost" 
                 size="sm" 
-                onClick={logout}
+                onClick={handleLogout}
                 className="text-gray-600 hover:text-gray-900"
               >
                 <LogOut className="w-4 h-4" />
