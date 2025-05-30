@@ -1,4 +1,3 @@
-
 import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -7,9 +6,10 @@ import { TrendingUp, TrendingDown, Bell, Plus, User, LogOut } from "lucide-react
 import { StockCard } from "@/components/StockCard";
 import { AddStockDialog } from "@/components/AddStockDialog";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Index = () => {
-  const { login, logout, isAuthenticated, isLoading, user } = useKindeAuth();
+  const { logout, isAuthenticated, isLoading, user } = useKindeAuth();
   const [showAddStock, setShowAddStock] = useState(false);
   const [watchlist, setWatchlist] = useState([
     {
@@ -29,10 +29,6 @@ const Index = () => {
       reason: "Monitoring AI chip demand and competition"
     }
   ]);
-
-  const handleLogin = () => {
-    login();
-  };
 
   const handleLogout = () => {
     logout();
@@ -77,11 +73,10 @@ const Index = () => {
                 <span className="text-sm">Custom watchlists</span>
               </div>
             </div>
-            <Button 
-              onClick={handleLogin} 
-              className="w-full bg-blue-600 hover:bg-blue-700"
-            >
-              Sign In to Get Started
+            <Button asChild className="w-full bg-blue-600 hover:bg-blue-700">
+              <Link to="/signin">
+                Sign In to Get Started
+              </Link>
             </Button>
           </CardContent>
         </Card>
